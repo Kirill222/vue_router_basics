@@ -24,6 +24,7 @@ const routes = [
     path: '/jobs/:job_id',
     name: 'JobDetails',
     component: JobDetails,
+    props: true, //to be able to send parameters as props
   }
 ]
 
