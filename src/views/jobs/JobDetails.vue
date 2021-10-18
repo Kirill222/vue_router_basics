@@ -1,6 +1,11 @@
 <template>
-  <h1>{{job.title}}</h1>
-  <p>{{job.details}}</p>
+    <div v-if="job">
+        <h1>{{job.title}}</h1>
+        <p>{{job.details}}</p>
+    </div> 
+    <div v-else>
+        <h1>Loading...</h1>
+    </div> 
 </template>
 
 <script>
@@ -8,7 +13,7 @@ export default {
     props: ['job_id'], //route parameters can be accepted as props
     data() {
         return {
-            job: {}
+            job: null
         }
     },
     mounted() {
