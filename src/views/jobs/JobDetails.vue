@@ -1,6 +1,6 @@
 <template>
-  <h1>Job details page</h1>
-  <p>The job id is {{job_id}}</p>
+  <h1>{{job.title}}</h1>
+  <p>{{job.details}}</p>
 </template>
 
 <script>
@@ -8,8 +8,14 @@ export default {
     props: ['job_id'], //route parameters can be accepted as props
     data() {
         return {
-            //job_id: this.$route.params.job_id,  //this is another way to extract ID parameter from URL, but here props are used to do so
+            job: {}
         }
+    },
+    mounted() {
+        fetch(`http://localhost:3000/jobs/${this.job_id}`)
+            .then(res => res.json())
+            .then(data => this.job = data)
+            .catch(err => console.log(err.message))
     }
 }
 </script>
