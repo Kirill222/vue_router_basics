@@ -3,6 +3,8 @@ import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Jobs from '../views/jobs/Jobs.vue'
 import JobDetails from '../views/jobs/JobDetails.vue'
+import NotFound from '../views/NotFound.vue'
+
 
 const routes = [
   {
@@ -25,7 +27,18 @@ const routes = [
     name: 'JobDetails',
     component: JobDetails,
     props: true, //to be able to send parameters as props
-  }
+  },
+  //redirect
+  {
+    path: '/all-jobs',
+    redirect: 'jobs',
+  },
+  //404 redirect
+  {
+    path: '/:catchAll(.*)',
+    name: 'NotFound',
+    component: NotFound,
+  },
 ]
 
 const router = createRouter({
